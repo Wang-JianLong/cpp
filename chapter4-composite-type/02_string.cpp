@@ -2,7 +2,7 @@
 #include <iostream>
 void get_line();
 void get_like_dessert(void);
-
+void get_get();
 int main() {
   // 字符串是存储在内存中的连续字节中的一系列字符
   // 拼接 字符串
@@ -14,24 +14,36 @@ int main() {
   name[3] = '\0';
   std::cout << name << std::endl;
   // get_like_dessert();
-  get_line();
+  get_get();
   return 0;
 }
 
+void get_get() {
+  using namespace std;
+  char name[12]{};
+  char age[12]{};
+  std::cout << "请输入您的姓名: ";
+  cin.get(name, 12);
+  // get读取之后不会丢弃换行符 将其留在输入队列里
+  // 下次再读取就会读取到换行符且没有任何内容
+  cin.get();
+  cin.clear();
+  std::cout << "请输入您的年龄: ";
+  cin.get(age, 12);
+
+  std::cout << "name=" << name << "   age=" << age << std::endl;
+}
 void get_line() {
   using namespace std;
-  char ch[1024];
-  // 字符串  读取最大字节1024-1  读取到什么结束
-  // cin.getline(ch, 1024, '1');
-  // std::cout << ch << std::endl;
-  // cin.getline(ch, 20); // 会丢弃换行符
-  // cin.get(ch, 20).get(); // 读取一行19个字符  保留换行符
-  // cin.get();
-  // std::cout << ch << std::endl;
-  char ch2[12];
-  cin.getline(ch, 10);
-  cin.getline(ch2, 11);
-  std::cout << "ch1=" << ch << "\nch2=" << ch2 << std::endl;
+  char name[12]{};
+  char age[12]{};
+  std::cout << "请输入您的姓名: ";
+  cin.getline(name, 12);
+
+  std::cout << "请输入您的年龄: ";
+  cin.getline(age, 12);
+
+  std::cout << "name=" << name << "   age=" << age << std::endl;
 }
 void get_like_dessert() {
   using namespace std;
