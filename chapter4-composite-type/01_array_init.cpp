@@ -17,7 +17,7 @@ int main() {
   }
 
   // 显式初始化元素可以不用指定个数
-  int a[] = {1, 2};
+  int a[] = {3, 2};
 
   std::cout << "int a[] size of " << sizeof a << std::endl;
   return 0;
