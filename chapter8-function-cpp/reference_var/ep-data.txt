@@ -1,0 +1,7 @@
+Focal length of objective0mm
+  magnification
+         0.0            259
+         0.0    -2147483648
+         0.0            292
+         0.0            292
+         0.0              1
