@@ -48,7 +48,7 @@ int main()
     cout << d1 << endl;
 
     double dd = double(d1);
-    // 由于类中只定义了 转换为 double 的方法 不存在二义性 可以隐师转换 如果再定义一个转换int的就会报错
+    // 隐式转换会根据上下文环境进行 否则会报错
     double ddd = d;
     cout << dd << endl;
     cout << ddd << endl;
