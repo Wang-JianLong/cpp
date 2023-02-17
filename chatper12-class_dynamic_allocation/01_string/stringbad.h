@@ -33,6 +33,16 @@ class StringBad
     ~StringBad();
     // 赋值运算符默认逐个浅拷贝
     StringBad & operator=(const StringBad & s);
+    char& operator[](int i);
+    // 应对常量访问
+    const char & operator[](int i) const;
+    //  静态成员函数只能访问静态成员变量 StringBad::HowMany();
+    static int HowMany();
+    // 提高c风格字符串直接赋值的效率 不写的话  会经过 创建StringBad对象（StringBad(const char *)) 赋值临时变量(复制构造函数） 删除临时变量(析构函数） 的过程 ‘
+    StringBad & operator=(const char *);
+    friend bool operator==(const StringBad &s1,const StringBad &s2);
+    friend bool operator>(const StringBad &s1,const StringBad &s2);
+    friend bool operator<(const StringBad &s1,const StringBad &s2);
     friend std::ostream & operator<<(std::ostream & os,const StringBad & s);
 };
 

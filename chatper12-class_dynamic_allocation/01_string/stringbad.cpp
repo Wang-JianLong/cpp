@@ -39,7 +39,7 @@ StringBad::StringBad()
     len = 0;
     str = new char[1];
     // 或者 str = 0 指向空指针 C语言关键字 NULL cpp关键字nullptr
-    str[o] = '\0';
+    str[0] = '\0';
 }
 
 
@@ -67,6 +67,49 @@ StringBad & StringBad::operator=(const StringBad & s)
     return *this;
 }
 
+// 友元函数可以让C风格字符串与StringBad对象进行比较
+bool operator==(const StringBad &s1,const StringBad &s2)
+{
+  return (std::strcmp(s1.str,s2.str) == 0);
+}
+
+
+bool operator>(const StringBad &s1,const StringBad &s2)
+{
+  return (std::strcmp(s1.str,s2.str) < 0);
+}
+
+bool operator<(const StringBad &s1,const StringBad &s2)
+{
+  return (std::strcmp(s1.str,s2.str) > 0);
+}
+
+char & StringBad::operator[](int i)
+{
+  return str[i];
+}
+
+const char & StringBad::operator[](int i) const
+{
+   return str[i]; 
+}
+
+// 实际上是静态成员方法定义
+int StringBad::HowMany()
+{
+  return num_strings;
+}
+
+StringBad & StringBad::operator=(const char * s)
+{
+  // 删除旧数据
+  delete [] str;
+  len = std::strlen(s);
+  str = new char[len+1];
+  std::strcpy(str,s);
+  num_strings++;
+  return *this;
+}
 
 std::ostream & operator<<(std::ostream & os,const StringBad & s)
 {
